@@ -1,5 +1,8 @@
 package net.vantaforge.sownsimmer;
 
+import net.minecraft.world.item.CreativeModeTabs;
+import net.vantaforge.sownsimmer.item.ModCreativeModeTabs;
+import net.vantaforge.sownsimmer.item.ModItems;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -30,7 +33,10 @@ public class SowNSimmer {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        ModItems.register(modEventBus);
 
+
+        ModCreativeModeTabs.register(modEventBus);
 
 
 
@@ -63,7 +69,8 @@ public class SowNSimmer {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
+        if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
